@@ -1,0 +1,27 @@
+import xml.etree.ElementTree as ET
+
+# Read the file and grab the root node
+tree = ET.parse('system_report.xml')
+root = tree.getroot()
+
+
+print ("Read XML file Ok")
+
+## get all cluster names
+clusterName = root.findall(".//visibleSiteName")
+## get all softwareID's
+#softwareID = root.findall(".//uniqueIDOption")
+
+# Print all clusterNames 
+print("Number of Clusters in the RP Environment: %s" % len(clusterName))
+
+#print("\r\nCluster names:")
+for cluster in clusterName:
+    print("  %s" % cluster.text)
+    
+
+print("\r\nCluster Software ID:")
+for software_ID in softwareID:
+    print("  %s" % software_ID.text)
+
+
